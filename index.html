@@ -1,108 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cloud Storage</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f0f4f8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+<meta charset="UTF-8">
+<title>Cloud Storage</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .container {
-      background: white;
-      padding: 40px 50px;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      text-align: center;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
 
-    .cloud-icon {
-      font-size: 60px;
-      color: #4a90e2;
-      margin-bottom: 20px;
-    }
+body{
+  height:100vh;
+  background-image:url("PASTE_YOUR_BACKGROUND_BASE64_HERE");
+  background-size:cover;
+  background-position:center;
+  overflow:hidden;
+}
 
-    h2 {
-      margin-bottom: 25px;
-      color: #333;
-    }
+/* ===== Cloud Icon (Pure CSS) ===== */
+#cloudBox{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;
+  cursor:pointer;
+}
 
-    input[type="text"], input[type="password"] {
-      width: 100%;
-      padding: 12px 15px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      outline: none;
-      font-size: 16px;
-    }
+.cloud{
+  position:relative;
+  width:100px;
+  height:40px;
+  background:white;
+  border-radius:20px;
+  margin:auto;
+}
 
-    input[type="submit"] {
-      width: 100%;
-      padding: 12px;
-      margin-top: 15px;
-      border: none;
-      border-radius: 8px;
-      background-color: #4a90e2;
-      color: white;
-      font-size: 18px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
+.cloud::before{
+  content:"";
+  position:absolute;
+  width:50px;
+  height:50px;
+  background:white;
+  border-radius:50%;
+  top:-25px;
+  left:10px;
+}
 
-    input[type="submit"]:hover {
-      background-color: #357ABD;
-    }
+.cloud::after{
+  content:"";
+  position:absolute;
+  width:60px;
+  height:60px;
+  background:white;
+  border-radius:50%;
+  top:-35px;
+  right:10px;
+}
 
-    /* Simple CSS cloud shape */
-    .cloud {
-      width: 100px;
-      height: 60px;
-      background: #4a90e2;
-      border-radius: 50px;
-      position: relative;
-      margin: 0 auto 20px;
-    }
+#cloudBox p{
+  color:white;
+  margin-top:12px;
+  font-size:18px;
+}
 
-    .cloud::before,
-    .cloud::after {
-      content: '';
-      position: absolute;
-      background: #4a90e2;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      top: -30px;
-    }
+/* ===== Login Popup ===== */
+#loginBox{
+  display:none;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:rgba(255,255,255,0.95);
+  padding:20px;
+  border-radius:12px;
+  width:280px;
+  z-index:10;
+}
 
-    .cloud::before {
-      left: 10px;
-    }
+#loginBox h3{
+  text-align:center;
+}
 
-    .cloud::after {
-      right: 10px;
-    }
+#loginBox input{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+}
 
-  </style>
+#loginBox button{
+  width:100%;
+  margin-top:15px;
+  padding:10px;
+  background:#2196f3;
+  color:white;
+  border:none;
+  border-radius:5px;
+}
+
+/* ===== Vyom Popup ===== */
+.vyom{
+  position:absolute;
+  color:white;
+  font-size:18px;
+  pointer-events:none;
+  animation:fly 0.5s linear forwards;
+}
+
+@keyframes fly{
+  from{opacity:1;}
+  to{transform:translateY(-50px);opacity:0;}
+}
+</style>
 </head>
+
 <body>
 
-  <div class="container">
-    <div class="cloud"></div>
-    <h2>Cloud Storage Login</h2>
-    <form>
-      <input type="text" placeholder="Username" required>
-      <input type="password" placeholder="Password" required>
-      <input type="submit" value="Login">
-    </form>
-  </div>
+<div id="cloudBox">
+  <div class="cloud"></div>
+  <p>Cloud Storage</p>
+</div>
+
+<div id="loginBox">
+  <h3>Login</h3>
+  <input type="email" value="yvverma27@gmail.com">
+  <input type="password" placeholder="Password">
+  <button>Login</button>
+</div>
+
+<script>
+const cloud = document.getElementById("cloudBox");
+const login = document.getElementById("loginBox");
+
+cloud.onclick = (e)=>{
+  e.stopPropagation();
+  login.style.display="block";
+};
+
+document.body.onclick = (e)=>{
+  if(e.target.closest("#cloudBox") || e.target.closest("#loginBox")) return;
+
+  const v = document.createElement("div");
+  v.className="vyom";
+  v.innerText="Vyom";
+  v.style.left = e.clientX+"px";
+  v.style.top = e.clientY+"px";
+  document.body.appendChild(v);
+
+  setTimeout(()=>v.remove(),500);
+};
+</script>
 
 </body>
-    </html>
+</html>
