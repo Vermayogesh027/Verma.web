@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Access Lock</title>
+    <title>Secure Lock</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,28 +12,31 @@
     <div id="lockScreen">
         <div class="lock-box">
             <h1 class="glow-text">SECURE ACCESS</h1>
-            <p>Password changes every minute</p>
+            <p class="timer-text">Password changes every minute</p>
             
-            <div class="input-container">
-                <input type="password" id="password" placeholder="Enter password">
-                <button type="button" id="toggleBtn" onclick="togglePass()">👁️</button>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Enter password" autocomplete="off">
+                <button type="button" id="eyeBtn" onclick="togglePass()">👁️</button>
             </div>
 
-            <button class="enter-btn" onclick="unlock()">ENTER</button>
-            <div id="error"></div>
+            <button id="enterBtn" onclick="unlock()">ENTER</button>
+            <div id="errorMsg"></div>
         </div>
     </div>
 
-    <!-- MAIN WEBSITE CONTENT -->
-    <div id="site" class="hidden">
+    <!-- MAIN SITE (Pehle se hidden rahega) -->
+    <div id="mainSite" class="hidden">
         <canvas id="matrix"></canvas>
-        <div class="top-name">V Y O M</div>
-        <section class="panel">
-            <div class="glass">
+        <div class="header-content">
+            <h1>Yogesh Kumar Verma</h1>
+            <p>Hacker Theme Landing Page</p>
+        </div>
+        <div class="card-container">
+            <div class="glass-effect">
                 <h2>ACCESS GRANTED</h2>
-                <p>Welcome to the secure area.</p>
+                <p>Welcome to your secure dashboard.</p>
             </div>
-        </section>
+        </div>
     </div>
 
     <script src="script.js"></script>
