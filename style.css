@@ -8,100 +8,106 @@
 body {
     background: black;
     color: #00ff9c;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
-/* LOCK SCREEN BACKGROUND */
+.hidden { display: none !important; }
+
+/* LOCK SCREEN STYLES */
 #lockScreen {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    z-index: 999999; /* Isse lock screen sabse upar rahegi */
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 99999;
-    /* Aapki photo.jpg yahan background mein lagegi */
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url("photo.jpg");
-    background-size: cover;
-    background-position: center;
+    /* BACKGROUND IMAGE FIX */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url("photo.jpg") center/cover no-repeat;
 }
 
 .lock-box {
-    padding: 40px;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 30px;
     border: 2px solid #00ff9c;
     text-align: center;
-    backdrop-filter: blur(10px);
-    background: rgba(0, 0, 0, 0.4);
-    box-shadow: 0 0 30px #00ff9c;
+    box-shadow: 0 0 25px #00ff9c;
+    width: 90%;
+    max-width: 350px;
 }
 
-/* GLOWING ANIMATION FOR SECURE ACCESS */
 .glow-text {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    letter-spacing: 5px;
+    font-size: 1.8rem;
+    letter-spacing: 3px;
     color: #00ff9c;
-    text-shadow: 0 0 10px #00ff9c, 0 0 20px #00ff9c;
-    animation: pulse 1.5s infinite alternate;
+    text-shadow: 0 0 10px #00ff9c;
+    animation: neon 1.5s infinite alternate;
 }
 
-@keyframes pulse {
-    from { text-shadow: 0 0 10px #00ff9c, 0 0 20px #00ff9c; }
-    to { text-shadow: 0 0 20px #00ff9c, 0 0 40px #00ff9c, 0 0 60px #00ff9c; }
+@keyframes neon {
+    from { text-shadow: 0 0 10px #00ff9c; }
+    to { text-shadow: 0 0 25px #00ff9c, 0 0 40px #00ff9c; }
 }
 
-.input-container {
-    position: relative;
-    margin: 20px 0;
+.input-group {
     display: flex;
-    align-items: center;
+    margin: 20px 0;
+    gap: 5px;
 }
 
 #password {
-    padding: 12px;
-    width: 250px;
-    background: black;
+    flex: 1;
+    padding: 15px;
+    background: #000;
     border: 1px solid #00ff9c;
     color: #00ff9c;
+    font-size: 16px;
     outline: none;
+}
+
+#eyeBtn {
+    padding: 0 15px;
+    background: #000;
+    border: 1px solid #00ff9c;
+    color: #00ff9c;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#enterBtn {
+    width: 100%;
+    padding: 15px;
+    background: transparent;
+    border: 1px solid #00ff9c;
+    color: #00ff9c;
+    font-weight: bold;
+    cursor: pointer;
     font-size: 16px;
 }
 
-#toggleBtn {
-    background: transparent;
-    border: 1px solid #00ff9c;
-    color: #00ff9c;
-    padding: 10px;
-    cursor: pointer;
-    margin-left: 5px;
-}
-
-.enter-btn {
-    padding: 10px 40px;
-    background: transparent;
-    border: 1px solid #00ff9c;
-    color: #00ff9c;
-    cursor: pointer;
-    font-size: 18px;
-    transition: 0.3s;
-}
-
-.enter-btn:hover {
+#enterBtn:active, #eyeBtn:active {
     background: #00ff9c;
-    color: black;
+    color: #000;
 }
 
-#error {
-    color: #ff4d4d;
+#errorMsg {
     margin-top: 15px;
+    color: #ff3333;
     font-weight: bold;
 }
 
-.hidden { display: none; }
-
-/* MATRIX & OTHER STYLES */
+/* MAIN SITE STYLES */
 #matrix { position: fixed; inset: 0; z-index: -1; }
-.top-name { position: fixed; top: 20px; width: 100%; text-align: center; font-size: 3rem; text-shadow: 0 0 20px #00ff9c; }
-.panel { height: 100vh; display: flex; align-items: center; justify-content: center; }
-.glass { padding: 40px; background: rgba(0, 255, 156, 0.1); border: 1px solid rgba(0, 255, 156, 0.3); backdrop-filter: blur(15px); border-radius: 15px; text-align: center; }
+.header-content { text-align: center; padding: 40px 10px; }
+.glass-effect {
+    background: rgba(0, 255, 156, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 255, 156, 0.3);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 300px;
+    margin: 0 auto;
+}
