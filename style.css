@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background: black;
+    color: #00ff9c;
+    overflow-x: hidden;
+}
+
+/* LOCK SCREEN BACKGROUND */
+#lockScreen {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    /* Aapki photo.jpg yahan background mein lagegi */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url("photo.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.lock-box {
+    padding: 40px;
+    border: 2px solid #00ff9c;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 30px #00ff9c;
+}
+
+/* GLOWING ANIMATION FOR SECURE ACCESS */
+.glow-text {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 5px;
+    color: #00ff9c;
+    text-shadow: 0 0 10px #00ff9c, 0 0 20px #00ff9c;
+    animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+    from { text-shadow: 0 0 10px #00ff9c, 0 0 20px #00ff9c; }
+    to { text-shadow: 0 0 20px #00ff9c, 0 0 40px #00ff9c, 0 0 60px #00ff9c; }
+}
+
+.input-container {
+    position: relative;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+#password {
+    padding: 12px;
+    width: 250px;
+    background: black;
+    border: 1px solid #00ff9c;
+    color: #00ff9c;
+    outline: none;
+    font-size: 16px;
+}
+
+#toggleBtn {
+    background: transparent;
+    border: 1px solid #00ff9c;
+    color: #00ff9c;
+    padding: 10px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.enter-btn {
+    padding: 10px 40px;
+    background: transparent;
+    border: 1px solid #00ff9c;
+    color: #00ff9c;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.enter-btn:hover {
+    background: #00ff9c;
+    color: black;
+}
+
+#error {
+    color: #ff4d4d;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.hidden { display: none; }
+
+/* MATRIX & OTHER STYLES */
+#matrix { position: fixed; inset: 0; z-index: -1; }
+.top-name { position: fixed; top: 20px; width: 100%; text-align: center; font-size: 3rem; text-shadow: 0 0 20px #00ff9c; }
+.panel { height: 100vh; display: flex; align-items: center; justify-content: center; }
+.glass { padding: 40px; background: rgba(0, 255, 156, 0.1); border: 1px solid rgba(0, 255, 156, 0.3); backdrop-filter: blur(15px); border-radius: 15px; text-align: center; }
