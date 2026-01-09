@@ -3,13 +3,17 @@ function togglePass() {
     input.type = input.type === "password" ? "text" : "password";
 }
 
+// Enter key to unlock
 document.getElementById("password").addEventListener("keypress", (e) => {
     if (e.key === "Enter") unlock();
 });
 
 function unlock() {
     const now = new Date();
-    const pass = "VYOM" + now.getHours() + now.getMinutes().toString().padStart(2, '0') + "@";
+    const h = now.getHours();
+    const m = now.getMinutes().toString().padStart(2, '0');
+    const pass = "VYOM" + h + m + "@";
+    
     if (document.getElementById("password").value === pass) {
         document.getElementById("lockScreen").style.display = "none";
         document.getElementById("site").classList.remove("hidden");
@@ -20,9 +24,9 @@ function unlock() {
     }
 }
 
+// Function to open files
 function openFile(fileName) {
-    alert("Opening: " + fileName);
-    // Asli file kholne ke liye yahan window.open(fileName) use karein
+    window.open(fileName, '_blank');
 }
 
 function startMatrix() {
@@ -42,4 +46,4 @@ function startMatrix() {
         });
     }
     setInterval(draw, 33);
-                                                     }
+                }
