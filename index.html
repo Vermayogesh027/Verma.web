@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Access Lock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- LOCK SCREEN -->
+    <div id="lockScreen">
+        <!-- Page 1: Main Lock -->
+        <section class="lock-page">
+            <div class="lock-box">
+                <h1 class="glow-text">SECURE ACCESS</h1>
+                <p class="sub-text">ENCRYPTION LEVEL: MAXIMUM</p>
+                
+                <div class="input-container">
+                    <input type="password" id="password" placeholder="Enter password">
+                    <button type="button" id="toggleBtn" onclick="togglePass()">👁️</button>
+                </div>
+
+                <button class="enter-btn matrix-btn" onclick="unlock()">ENTER SYSTEM</button>
+                <div id="error"></div>
+            </div>
+            <div class="scroll-hint">Scroll down for System Protocols ↓</div>
+        </section>
+
+        <!-- Page 2: System Logs (Extra) -->
+        <section class="lock-page">
+            <div class="info-box">
+                <h2 class="glow-text-small">SYSTEM LOGS</h2>
+                <ul class="log-list">
+                    <li>> Initializing security layer... OK</li>
+                    <li>> Monitoring firewall traffic... ACTIVE</li>
+                    <li>> Detecting unauthorized access... NONE</li>
+                    <li>> Encryption key: RSA-4096</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Page 3: Protocols (Extra) -->
+        <section class="lock-page">
+            <div class="info-box">
+                <h2 class="glow-text-small">SECURITY PROTOCOLS</h2>
+                <p>Authorized personnel only. All activities are being recorded.</p>
+                <p>Password changes every minute based on system time.</p>
+                <button class="scroll-up-btn" onclick="document.querySelector('#lockScreen').scrollTo({top: 0, behavior: 'smooth'})">Back to Login</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- MAIN WEBSITE CONTENT (No changes here) -->
+    <div id="site" class="hidden">
+        <canvas id="matrix"></canvas>
+        <div class="top-name">V Y O M</div>
+        <section class="panel">
+            <div class="glass">
+                <h2>ACCESS GRANTED</h2>
+                <p>Welcome to the secure area.</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
